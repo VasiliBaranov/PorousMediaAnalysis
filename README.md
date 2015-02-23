@@ -57,7 +57,7 @@ Shortest paths computation
 
 The program can calculate shortest paths between a single starting void voxel and all other void voxel of a reconstruction. As a starting voxel, we use a void voxel closest to the geometric center of the sample. To calculate shortest paths, we considered each void voxel as a vertex in a graph. We consider each voxel connected only with its 26 nearest neighbors, excluding solid voxels. Euclidean distance between voxels is used as a weight of edges in this graph. It can thus have only values of 1, √2, and √3. Thus, we calculate shortest paths between the starting voxel and other void voxels inside this graph. We employ Dijkstra’s shortest paths algorithm.
 
-For a very detailed description of the steps above, please read [this wiki page](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Shortest-path-computation-description).
+For a very detailed description of this step, please read [this wiki page](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Shortest-path-computation-description).
 
 
 Program execution
