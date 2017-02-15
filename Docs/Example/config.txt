@@ -1,0 +1,11 @@
+Resolution of initial images: 1 1 1
+Available memory in megabytes: 1500
+Max ratio of pore radius to seed radius: 10.0
+Use D3Q7 stencil: 0
+Number of threads: 7
+
+Comments:
+"Max ratio of pore radius to seed radius" is the ratio of the maximum expected distance from pore center 
+to the last pore ball (including balls in shared throats) to the radius of the starting pore ball (seed).
+
+If "Use D3Q7 stencil" is 0, the default D3Q27 stencil is used
