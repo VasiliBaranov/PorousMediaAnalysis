@@ -55,7 +55,11 @@
 #include <sys/utime.h>
 #include <winsock2.h>
 #pragma comment(lib, "ws2_32.lib")
+
+#if defined(_MSC_VER) && _MSC_VER < 1900
 #define snprintf _snprintf
+#endif
+
 #define strcasecmp stricmp
 #define strncasecmp strnicmp
 typedef __int64 INT64;
@@ -9016,7 +9020,7 @@ void CLASS tiff_head (struct tiff_hdr *th, int full)
   strncpy (th->desc, desc, 512);
   strncpy (th->make, make, 64);
   strncpy (th->model, model, 64);
-  strcpy (th->soft, "dcraw v"DCRAW_VERSION);
+  strcpy (th->soft, "dcraw v" DCRAW_VERSION);
   t = localtime (&timestamp);
   sprintf (th->date, "%04d:%02d:%02d %02d:%02d:%02d",
       t->tm_year+1900,t->tm_mon+1,t->tm_mday,t->tm_hour,t->tm_min,t->tm_sec);
