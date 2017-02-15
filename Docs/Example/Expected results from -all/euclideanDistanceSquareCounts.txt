@@ -1,0 +1,6 @@
+EuclideanDistanceSquaresCount (line index is EuclideanDistanceSquare, the next line has index one)
+307538
+14443
+4172
+75530
+0

@@ -1,0 +1,2 @@
+Max Euclidean distance square: 2561
+Maximum balls count: 377746

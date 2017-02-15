@@ -1,0 +1,2 @@
+CavityId SeedX SeedY SeedZ DistanceToCenter VoidPixelsCount ReachedWallsCount IsReachingAllWalls
+127 597 479 2 1.732051 2615096 6 1
