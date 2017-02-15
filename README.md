@@ -7,8 +7,17 @@ The program allows morphological processing of three-dimensional binary images, 
 It is a console program, which doesn't require any preinstalled libraries, is multiplatform (Windows/nix) and supports in some steps OpenMP.
 
 It was developed by me (Vasili Baranau) while doing research in the group of
-Prof. Ulrich Tallarek in Marburg, Germany, in 2014. It is distributed under the [MIT license](https://github.com/VasiliBaranov/PorousMediaAnalysis/blob/master/LICENSE).
+Prof. Dr. Ulrich Tallarek in Marburg, Germany, in 2014. It is distributed under the [MIT license](https://github.com/VasiliBaranov/PorousMediaAnalysis/blob/master/LICENSE). If you use this program in a scientific project, **please cite this paper**: *K. Hormann, V. Baranau, D. Hlushkou, A. Höltzel, and U. Tallarek; Topological analysis of non-granular, disordered porous media: determination of pore connectivity, pore coordination, and geometric tortuosity in physically reconstructed silica monoliths; New Journal of Chemistry, 40, 4187–4199 (2015)*; [doi:10.1039/C5NJ02814K](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k).
 
+Main links in the project
+=======
+1. This page, below : a short program description and links to important wiki pages
+2. [Latest release](https://github.com/VasiliBaranov/PorousMediaAnalysis/releases/latest)
+3. [Wiki](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki)
+4. [Example](https://github.com/VasiliBaranov/PorousMediaAnalysis/tree/master/Docs/Example)
+5. [Matlab scripts for reading the results](https://github.com/VasiliBaranov/PorousMediaAnalysis/tree/master/Docs/Matlab%20scripts%20for%20tiff%20reinterpreting)
+
+___
 Below is a very short program description on a conceptual level and some links to important wiki pages. For a very detailed algorithm and program API description, please see the project [wiki](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki). Please read the wiki page [Compilation](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Compilation) prior to building the project, because compilation on nix systems may require some precaution due to a [bug](https://bugs.eclipse.org/bugs/show_bug.cgi?id=340300) in Eclipse.
 
 Table of contents:
