@@ -1,13 +1,19 @@
 # Welcome to the PorousMediaAnalysis project
 
 The program allows morphological processing of three-dimensional binary images, comprised of solid (black) and void (non-black) pixels. It can 
-* detect pores (large connected parts of void pixels) and throats between these pores. This procedure is based on, but not equivalent to, the work of [Dong and Blunt](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.80.036307)
+* detect pores (large connected parts of void pixels) and throats between these pores. This procedure is based on, but not equivalent to, the work of [Dong and Blunt, 2009](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.80.036307)
 * compute shortest paths (geodesic distance) between the center void pixel and all the other void pixels in the sample
 
 It is a console program, which doesn't require any preinstalled libraries, is multiplatform (Windows/nix) and supports in some steps OpenMP.
 
 It was developed by me (Vasili Baranau) while doing research in the group of
 Prof. Dr. Ulrich Tallarek in Marburg, Germany, in 2014. It is distributed under the [MIT license](https://github.com/VasiliBaranov/PorousMediaAnalysis/blob/master/LICENSE). If you use this program in a scientific project, **please cite this paper**: *K. Hormann, V. Baranau, D. Hlushkou, A. Höltzel, and U. Tallarek; Topological analysis of non-granular, disordered porous media: determination of pore connectivity, pore coordination, and geometric tortuosity in physically reconstructed silica monoliths; New Journal of Chemistry, 40, 4187–4199 (2015)*; [doi:10.1039/C5NJ02814K](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k).
+
+Overview of operation
+=======
+![Overview of operation](https://github.com/VasiliBaranov/PorousMediaAnalysis/blob/master/Docs/Wiki/Images/FrontPageImage.png)
+
+The image above represents detecting pores in the solid-void structure. From left to right: original geometry (white—solid); Euclidean Distance Transform; "containing ball radii" (in the sense of [local thickness](https://imagej.net/Local_Thickness)); separation of the void space into pores (pore boundaries are black). Similar to Fig. 3 in [Hormann et al., 2015](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k). For details, see  [Short algorithm description](https://github.com/VasiliBaranov/PorousMediaAnalysis#short-algorithm-description) below (the image depicts stages 1, 2, and 5) or the [full pore-throat detection description](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description).
 
 Main links in the project
 =======
@@ -34,7 +40,7 @@ Short algorithm description
 Pore-throat detection
 -----------
 
-To detect pores and throats, we do the following steps (inspired by the work of [Dong and Blunt](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.80.036307)):
+To detect pores and throats, we do the following steps (inspired by the work of [Dong and Blunt, 2009](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.80.036307)):
 
 1.	Do Euclidean distance transform (EDT)
 2.	Find containing spheres for each pixel
@@ -42,7 +48,7 @@ To detect pores and throats, we do the following steps (inspired by the work of 
 4.	Do pore propagation through containing ball radii starting at the pore seeds
 5.	Do watershed propagation through containing ball radii, using the pore seeds as water sources
 
-This procedure is described in slightly more detail just below. For a very detailed description, please read [this wiki page](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description).
+The image above depicts stages 1, 2, and 5. This procedure is described in slightly more detail just below. For a very detailed description, please read [this wiki page](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description).
 
 ### 1. Euclidean distance transform
 We do a standard Euclidean distance transform. In other words, we determine for each voxel a sphere that can be inscribed around this voxel and just touches the solid boundary (the maximum inscribed sphere).
