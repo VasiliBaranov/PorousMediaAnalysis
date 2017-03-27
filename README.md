@@ -13,7 +13,7 @@ Overview of operation
 =======
 ![Overview of operation](https://github.com/VasiliBaranov/PorousMediaAnalysis/blob/master/Docs/Wiki/Images/FrontPageImage.png)
 
-The image above represents detecting pores in the solid-void structure. From left to right: original geometry (white—solid); Euclidean Distance Transform; "containing ball radii" (in the sense of [local thickness](https://imagej.net/Local_Thickness)); separation of the void space into pores (pore boundaries are black). Similar to Fig. 3 in [Hormann et al., 2015](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k). For details, see  [Short algorithm description](https://github.com/VasiliBaranov/PorousMediaAnalysis#short-algorithm-description) below (the image depicts stages 1, 2, and 5) or the [full pore-throat detection description](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description).
+The image above represents detecting pores in the solid-void structure. From left to right: original geometry (white—solid); Euclidean Distance Transform; "containing ball radii" (in the sense of [local thickness](https://imagej.net/Local_Thickness)); separation of the void space into pores (pore boundaries are black). Similar to Fig. 3 in [Hormann et al., 2015](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k). For details, see the [short algorithm description](https://github.com/VasiliBaranov/PorousMediaAnalysis#short-algorithm-description) below or the [full pore-throat detection description](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description).
 
 Main links in the project
 =======
@@ -48,7 +48,7 @@ To detect pores and throats, we do the following steps (inspired by the work of 
 4.	Do pore propagation through containing ball radii starting at the pore seeds
 5.	Do watershed propagation through containing ball radii, using the pore seeds as water sources
 
-The image above depicts stages 1, 2, and 5. This procedure is described in slightly more detail just below. For a very detailed description, please read [this wiki page](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description).
+The image above in the [overview of operation](https://github.com/VasiliBaranov/PorousMediaAnalysis#overview-of-operation) depicts stages 1, 2, and 5. This procedure is described in slightly more detail just below. For a very detailed description, please read [this wiki page](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description).
 
 ### 1. Euclidean distance transform
 We do a standard Euclidean distance transform. In other words, we determine for each voxel a sphere that can be inscribed around this voxel and just touches the solid boundary (the maximum inscribed sphere).
