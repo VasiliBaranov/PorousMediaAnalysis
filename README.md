@@ -1,8 +1,8 @@
 # Welcome to the PorousMediaAnalysis project
 
 The program allows morphological processing of three-dimensional binary images, comprised of solid (black) and void (non-black) pixels. It can 
-* detect pores (large connected parts of void pixels) and throats between these pores. This procedure is based on, but not equivalent to, the work of [Dong and Blunt, 2009](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.80.036307)
-* compute shortest paths (geodesic distance) between the center void pixel and all the other void pixels in the sample
+* detect pores (large connected parts of void voxels (3D pixels)) and throats between these pores. This procedure is based on, but not equivalent to, the work of [Dong and Blunt, 2009](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.80.036307)
+* compute shortest paths (geodesic distance) between the center void voxel and all the other void voxels in the sample
 
 It is a console program, which doesn't require any preinstalled libraries, is multiplatform (Windows/nix) and supports in some steps OpenMP. On Windows, it shall compile at least with Visual Studio 2010-2015.
 
@@ -15,9 +15,9 @@ Overview of operation
 =======
 ![Overview of operation](https://github.com/VasiliBaranov/PorousMediaAnalysis/blob/master/Docs/Wiki/Images/FrontPageImage.png)
 
-The image above represents detecting pores in the solid-void structure. From left to right: original geometry (white—solid); Euclidean Distance Transform; "containing ball radii" (in the sense of [local thickness](https://imagej.net/Local_Thickness)); separation of the void space into pores (pore boundaries are black). Similar to [Fig. 3](http://pubs.rsc.org/en/content/articlehtml/2016/nj/c5nj02814k#imgfig3) in [Hormann et al., 2015](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k). For details, see the [short algorithm description](https://github.com/VasiliBaranov/PorousMediaAnalysis#short-algorithm-description) below or the [full pore-throat detection description](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description).
+The image above represents detecting pores in the solid-void structure. From left to right: original geometry (white—solid); Euclidean Distance Transform; "containing ball radii" (in the sense of [local thickness](https://imagej.net/Local_Thickness)); separation of the void space into pores (pore boundaries are black). Similar to [Fig. 3](http://pubs.rsc.org/en/content/articlehtml/2016/nj/c5nj02814k#imgfig3) in [Hormann et al., 2015](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k). For details, see the [short algorithm description](https://github.com/VasiliBaranov/PorousMediaAnalysis#short-algorithm-description) below or the [full pore-throat detection description](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description). The calculations were done in 3D, this is why the structure of pores may seem a little unnatural for this particular 2D slice. 
 
-Another thing that the program does is computation of shortest paths to all the void pixels from the central void pixel.  An illustration of this operation can be found in [Fig. 8](http://pubs.rsc.org/en/content/articlehtml/2016/nj/c5nj02814k#imgfig8) in the paper of [Hormann et al., 2015](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k).
+Another thing that the program does is computation of shortest paths to all the void voxels from the central void voxel.  An illustration of this operation can be found in [Fig. 8](http://pubs.rsc.org/en/content/articlehtml/2016/nj/c5nj02814k#imgfig8) in the paper of [Hormann et al., 2015](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k).
 
 Main links in the project
 =======
@@ -47,12 +47,12 @@ Pore-throat detection
 To detect pores and throats, we do the following steps (inspired by the work of [Dong and Blunt, 2009](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.80.036307)):
 
 1.	Do Euclidean distance transform (EDT)
-2.	Find containing spheres for each pixel
+2.	Find containing spheres for each voxel
 3.	Find starting pore voxels (pore seeds)
 4.	Do pore propagation through containing ball radii starting at the pore seeds
 5.	Do watershed propagation through containing ball radii, using the pore seeds as water sources
 
-The image above in the [overview of operation](https://github.com/VasiliBaranov/PorousMediaAnalysis#overview-of-operation) depicts stages 1, 2, and 5. This procedure is described in slightly more detail just below. For a very detailed description, please read [this wiki page](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description).
+The image above in the [overview of operation](https://github.com/VasiliBaranov/PorousMediaAnalysis#overview-of-operation) depicts stages 1, 2, and 5. This procedure is described in slightly more detail just below. For a very detailed description, please read [this wiki page](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description). I will use the words "pixel" and "voxel" (3D pixel) interchangeably throughout the readme and the wiki pages.
 
 ### 1. Euclidean distance transform
 We do a standard Euclidean distance transform. In other words, we determine for each voxel a sphere that can be inscribed around this voxel and just touches the solid boundary (the maximum inscribed sphere).
