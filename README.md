@@ -4,10 +4,12 @@ The program allows morphological processing of three-dimensional binary images, 
 * detect pores (large connected parts of void pixels) and throats between these pores. This procedure is based on, but not equivalent to, the work of [Dong and Blunt, 2009](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.80.036307)
 * compute shortest paths (geodesic distance) between the center void pixel and all the other void pixels in the sample
 
-It is a console program, which doesn't require any preinstalled libraries, is multiplatform (Windows/nix) and supports in some steps OpenMP.
+It is a console program, which doesn't require any preinstalled libraries, is multiplatform (Windows/nix) and supports in some steps OpenMP. On Windows, it shall compile at least with Visual Studio 2010-2015.
 
 It was developed by me (Vasili Baranau) while doing research in the group of
-Prof. Dr. Ulrich Tallarek in Marburg, Germany, in 2014. It is distributed under the [MIT license](https://github.com/VasiliBaranov/PorousMediaAnalysis/blob/master/LICENSE). If you use this program in a scientific project, **please cite this paper**: *K. Hormann, V. Baranau, D. Hlushkou, A. Höltzel, and U. Tallarek; Topological analysis of non-granular, disordered porous media: determination of pore connectivity, pore coordination, and geometric tortuosity in physically reconstructed silica monoliths; New Journal of Chemistry, 40, 4187–4199 (2015)*; [doi:10.1039/C5NJ02814K](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k).
+Prof. Dr. Ulrich Tallarek in Marburg, Germany, in 2014. It is distributed under the [MIT license](https://github.com/VasiliBaranov/PorousMediaAnalysis/blob/master/LICENSE). This code (release v1.0) **has a DOI**: [![DOI](https://zenodo.org/badge/30070343.svg)](https://zenodo.org/badge/latestdoi/30070343).
+
+If you use this program in a scientific project, **please cite this paper**: *K. Hormann, V. Baranau, D. Hlushkou, A. Höltzel, and U. Tallarek; Topological analysis of non-granular, disordered porous media: determination of pore connectivity, pore coordination, and geometric tortuosity in physically reconstructed silica monoliths; New Journal of Chemistry, 40, 4187–4199 (2015)*; [doi:10.1039/C5NJ02814K](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k).
 
 Overview of operation
 =======
