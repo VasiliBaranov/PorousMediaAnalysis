@@ -15,7 +15,9 @@ Overview of operation
 =======
 ![Overview of operation](https://github.com/VasiliBaranov/PorousMediaAnalysis/blob/master/Docs/Wiki/Images/FrontPageImage.png)
 
-The image above represents detecting pores in the solid-void structure. From left to right: original geometry (white—solid); Euclidean Distance Transform; "containing ball radii" (in the sense of [local thickness](https://imagej.net/Local_Thickness)); separation of the void space into pores (pore boundaries are black). Similar to Fig. 3 in [Hormann et al., 2015](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k). For details, see the [short algorithm description](https://github.com/VasiliBaranov/PorousMediaAnalysis#short-algorithm-description) below or the [full pore-throat detection description](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description).
+The image above represents detecting pores in the solid-void structure. From left to right: original geometry (white—solid); Euclidean Distance Transform; "containing ball radii" (in the sense of [local thickness](https://imagej.net/Local_Thickness)); separation of the void space into pores (pore boundaries are black). Similar to [Fig. 3](http://pubs.rsc.org/en/content/articlehtml/2016/nj/c5nj02814k#imgfig3) in [Hormann et al., 2015](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k). For details, see the [short algorithm description](https://github.com/VasiliBaranov/PorousMediaAnalysis#short-algorithm-description) below or the [full pore-throat detection description](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Pore-throat-analysis-description).
+
+Another thing that the program does is computation of shortest paths to all the void pixels from the central void pixel.  An illustration of this operation can be found in [Fig. 8](http://pubs.rsc.org/en/content/articlehtml/2016/nj/c5nj02814k#imgfig8) in the paper of [Hormann et al., 2015](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k).
 
 Main links in the project
 =======
@@ -74,7 +76,7 @@ Shortest paths computation
 
 The program can calculate shortest paths between a single starting void voxel and all other void voxel of a reconstruction. As a starting voxel, we use a void voxel closest to the geometric center of the sample. To calculate shortest paths, we considered each void voxel as a vertex in a graph. We consider each voxel connected only with its 26 nearest neighbors, excluding solid voxels. Euclidean distance between voxels is used as a weight of edges in this graph. It can thus have only values of 1, √2, and √3. Thus, we calculate shortest paths between the starting voxel and other void voxels inside this graph. We employ Dijkstra’s shortest paths algorithm.
 
-For a very detailed description of this step, please read [this wiki page](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Shortest-path-computation-description).
+For a very detailed description of this step, please read [this wiki page](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Shortest-path-computation-description). An illustration of this operation can be found in [Fig. 8](http://pubs.rsc.org/en/content/articlehtml/2016/nj/c5nj02814k#imgfig8) in the paper of [Hormann et al., 2015](http://pubs.rsc.org/en/content/articlelanding/2016/nj/c5nj02814k).
 
 
 Program execution
@@ -97,3 +99,5 @@ Other
 [Architecture](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Architecture) describes a high-level architecture of the project.
 
 [Compilation](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Compilation) describes how to edit and build the PorousMediaAnalysis project. **Please read** it because compilation on nix systems may require some precaution due to a [bug](https://bugs.eclipse.org/bugs/show_bug.cgi?id=340300) in Eclipse.
+
+[Known problems](https://github.com/VasiliBaranov/PorousMediaAnalysis/wiki/Known-problems) describes the list of known problems and workarounds. Currently it contains a description of handling tiff images (that encode geometry) with inverted gray scales.
